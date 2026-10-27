@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: tugon-barangay40-41
+    runtime: node
+    plan: free
+    buildCommand: npm install --include=dev --legacy-peer-deps && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: PI_SERVER_URL
+        value: ""

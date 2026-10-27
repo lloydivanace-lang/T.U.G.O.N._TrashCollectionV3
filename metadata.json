@@ -1,0 +1,6 @@
+{
+  "name": "T.U.G.O.N.",
+  "description": "T.U.G.O.N. - Barangay 40 (Gumamela) & 41 (Rosal) Waste Collection Service with Raspberry Pi Cloud Storage",
+  "requestFramePermissions": ["geolocation", "camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

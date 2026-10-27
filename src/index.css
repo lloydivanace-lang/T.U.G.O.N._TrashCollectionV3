@@ -1,0 +1,159 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+:root {
+  --app-safe-x: 0px;
+  --app-safe-top: 0px;
+  --app-safe-bottom: 0px;
+  --app-vh: 100dvh;
+}
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body, #root {
+    width: 100%;
+    max-width: 100%;
+    min-height: var(--app-vh, 100dvh);
+    overflow-x: clip;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    color: #1e293b;
+    background-color: #f8fafc;
+    -webkit-tap-highlight-color: transparent;
+    overflow-wrap: break-word;
+  }
+}
+
+/* Adaptive Screen Shell controlled by Screen Calibration */
+.adaptive-app-shell {
+  min-height: var(--app-vh, 100dvh);
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+  padding-top: calc(env(safe-area-inset-top, 0px) + var(--app-safe-top, 0px));
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + var(--app-safe-bottom, 0px));
+  padding-left: calc(env(safe-area-inset-left, 0px) + var(--app-safe-x, 0px));
+  padding-right: calc(env(safe-area-inset-right, 0px) + var(--app-safe-x, 0px));
+  transition: padding 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Live 4-Corner Screen Fit Boundary Frame */
+.screen-fit-guide-frame {
+  position: fixed;
+  top: calc(env(safe-area-inset-top, 0px) + var(--app-safe-top, 0px) + 4px);
+  bottom: calc(env(safe-area-inset-bottom, 0px) + var(--app-safe-bottom, 0px) + 4px);
+  left: calc(env(safe-area-inset-left, 0px) + var(--app-safe-x, 0px) + 4px);
+  right: calc(env(safe-area-inset-right, 0px) + var(--app-safe-x, 0px) + 4px);
+  pointer-events: none;
+  z-index: 110;
+  border: 1.5px dashed rgba(16, 185, 129, 0.75);
+  border-radius: 16px;
+}
+
+/* Compact UI density mode for small or cramped phone displays */
+html[data-compact-ui="true"] main {
+  padding-bottom: 2.5rem;
+}
+
+html[data-compact-ui="true"] .rounded-3xl {
+  border-radius: 1.125rem;
+}
+
+/* Leaflet Container Styling */
+.leaflet-container {
+  width: 100% !important;
+  height: 100% !important;
+  background-color: #0f172a !important;
+  font-family: inherit !important;
+  outline: none;
+}
+
+.leaflet-container img.leaflet-tile, .leaflet-tile {
+  max-width: none !important;
+  max-height: none !important;
+  display: block;
+  visibility: inherit !important;
+}
+
+.leaflet-container img {
+  max-width: none !important;
+  max-height: none !important;
+}
+
+.leaflet-tile-pane {
+  z-index: 2 !important;
+}
+
+.leaflet-tile-container {
+  will-change: transform;
+}
+
+.leaflet-marker-pane {
+  z-index: 600 !important;
+}
+
+.leaflet-popup-pane {
+  z-index: 700 !important;
+}
+
+.leaflet-tooltip.brgy-40-tooltip {
+  background-color: rgba(8, 51, 68, 0.94) !important;
+  color: #ecfeff !important;
+  border: 1.5px solid #06b6d4 !important;
+  border-radius: 10px !important;
+  padding: 4px 10px !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45) !important;
+  pointer-events: none !important;
+}
+
+.leaflet-tooltip.brgy-40-tooltip::before {
+  display: none !important;
+}
+
+.leaflet-tooltip.brgy-41-tooltip {
+  background-color: rgba(6, 78, 59, 0.94) !important;
+  color: #ecfdf5 !important;
+  border: 1.5px solid #10b981 !important;
+  border-radius: 10px !important;
+  padding: 4px 10px !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45) !important;
+  pointer-events: none !important;
+}
+
+.leaflet-tooltip.brgy-41-tooltip::before {
+  display: none !important;
+}
+
+/* Custom Scrollbar Utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Smooth Touch Scrolling */
+.smooth-scroll-x {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}

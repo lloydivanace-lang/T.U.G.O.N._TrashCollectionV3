@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# P.U.L.S.E. - Render compatibility shim for accidental 'nmp' typo
+# Forward all arguments to npm
+exec npm "$@"
